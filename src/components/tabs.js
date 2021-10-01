@@ -1,5 +1,5 @@
 import { topics } from "../mocks/data";
-
+let str = '';
 const Tabs = (topics) => {
   // TASK 3
   // ---------------------
@@ -16,6 +16,7 @@ const Tabs = (topics) => {
   // </div>
   //
   // Create Element
+  
   const tabsTopics = document.createElement('div');
   const tab = [];
   for(let i=0; i< topics.topics.length; i++){
@@ -38,10 +39,16 @@ const Tabs = (topics) => {
     tab[i].textContent = topics.topics[i];
   }
 
+  tab[0].addEventListener('click',function(){
+      str = topics.topics[0]
+  });
+  console.log(str)
+
   return tabsTopics;
 }
 //console.log(Tabs(topics))
-
+console.log(str)
+import axios from "axios";
 const tabsAppender = (selector) => {
   // TASK 4
   // ---------------------
@@ -50,7 +57,14 @@ const tabsAppender = (selector) => {
   // Find the array of topics inside the response, and create the tabs using the Tabs component.
   // Append the tabs to the element in the DOM that matches the selector passed to the function.
   //
-  return document.querySelector(selector).appendChild(Tabs(topics));
+  
+  axios.get(`http://localhost:5000/api/topics`)
+    .then(resp => {
+      document.querySelector(selector).appendChild(Tabs(topics));
+    }).catch(err => {
+      console.error(err);
+    })
+  // return document.querySelector(selector).appendChild(Tabs(topics));
 }
 
 export { Tabs, tabsAppender }

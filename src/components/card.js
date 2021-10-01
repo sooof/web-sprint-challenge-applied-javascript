@@ -1,4 +1,4 @@
-import { articles } from "../mocks/data";
+//import { articles } from "../mocks/data";
 
 const Card = (article) => {
   // TASK 5
@@ -46,16 +46,14 @@ const Card = (article) => {
   headline.textContent = article.headline
   cardImg.src = article.authorPhoto
   authorName.textContent = article.authorName
-  console.log(article.headline);
-  console.log(article.authorPhoto);
-  console.log(article.authorName);
+
   //console.log(card);
 
   return card;
 }
 
 
-
+import axios from "axios";
 const cardAppender = (selector) => {
   // TASK 6
   // ---------------------
@@ -65,9 +63,23 @@ const cardAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
-  return articles.articles.javascript.forEach(article => {
-    document.querySelector(selector).appendChild(Card(article));
+  axios.get(`http://localhost:5000/api/articles`)
+  .then(resp => {
+    console.log(resp.data.articles)
+    for(let key in resp.data.articles){ 
+      //console.log(resp.data.articles[key])
+        resp.data.articles[key].forEach(article => {
+        document.querySelector(selector).appendChild(Card(article));
+      })
+    } 
   })
+  .catch(err => {
+    console.error(err);
+  })
+
+  // return articles.articles.javascript.forEach(article => {
+  //   document.querySelector(selector).appendChild(Card(article));
+  // })
   
 }
 
