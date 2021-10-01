@@ -34,12 +34,7 @@ const Header = (title, date, temp) => {
 
   return header;
 }
-//console.log(Header)
-//console.log(Header('title', '0927', '27'));
-//console.log(Header({title:'title', date:'0927', temp:'27'}));
 
-//document.querySelector('.header-container').appendChild(Header); 
-import axios from "axios";
 const headerAppender = (selector) => {
   // TASK 2
   // ---------------------
@@ -49,7 +44,5 @@ const headerAppender = (selector) => {
   //
   return document.querySelector(selector).appendChild(Header('Lambda Times', 'JANUARY 6,2021', '27°'));
 }
-
-
 
 export { Header, headerAppender }

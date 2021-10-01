@@ -1,3 +1,5 @@
+import { topics } from "../mocks/data";
+
 const Tabs = (topics) => {
   // TASK 3
   // ---------------------
@@ -13,7 +15,39 @@ const Tabs = (topics) => {
   //   <div class="tab">technology</div>
   // </div>
   //
+  // Create Element
+  const tabsTopics = document.createElement('div');
+  const tab = [];
+  for(let i=0; i< topics.topics.length; i++){
+    tab[i] = document.createElement('div');
+  }
+
+  // Append Element
+  for(let i=0; i< topics.topics.length; i++){
+    tabsTopics.appendChild(tab[i]);
+  }
+
+  //  Add Class
+  tabsTopics.classList.add('topics');
+  // for(let i=0; i< topics.topics.length; i++){
+  //   tab[i].classList.add('tab');
+  // }
+  tab.forEach(element => {
+    element.classList.add('tab');
+  });
+
+  console.log(topics);
+  console.log(topics.topics);
+  console.log(topics.topics.length);
+
+  // Add Attributes value
+  for(let i=0; i< topics.topics.length; i++){
+    tab[i].textContent = topics.topics[i];
+  }
+
+  return tabsTopics;
 }
+//console.log(Tabs(topics))
 
 const tabsAppender = (selector) => {
   // TASK 4
@@ -23,6 +57,7 @@ const tabsAppender = (selector) => {
   // Find the array of topics inside the response, and create the tabs using the Tabs component.
   // Append the tabs to the element in the DOM that matches the selector passed to the function.
   //
+  return document.querySelector(selector).appendChild(Tabs(topics));
 }
 
 export { Tabs, tabsAppender }
