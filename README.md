@@ -60,8 +60,22 @@ In meeting the minimum viable product (MVP) specifications listed below, your pr
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. What is the DOM?
-    
+
+    The Document Object Model, or the “DOM”, is an interface to web pages. It is essentially an API to the page, allowing programs to read and manipulate the page’s content, structure, and styles. Let’s break this down.
+
 2. What is an event?
+
+    After the event occurs, an event object will be generated and passed to the listener function as a parameter. The browser provides an event object locally, all `events` are instances of this object, said to inherit the `Event.prototype` object
+
+
 3. What is an event listener?
+
+    An event listener is a procedure in JavaScript that waits for an event to occur. The simple example of an event is a user clicking the mouse or pressing a key on the keyboard.
+
 4. Why would we convert a NodeList into an Array?
+
+    A NodeList may look like an array, but in reality, they both are two completely different things. A NodeList object is basically a collection of DOM nodes extracted from the HTML document. An array is a special data-type in JavaScript
+
 5. What is a component?
+
+    Components are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML via a render() function. Components come in two types, Class components and Function components, in this tutorial we will concentrate on Class components.
