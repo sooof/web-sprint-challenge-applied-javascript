@@ -29,16 +29,9 @@ const Tabs = (topics) => {
 
   //  Add Class
   tabsTopics.classList.add('topics');
-  // for(let i=0; i< topics.topics.length; i++){
-  //   tab[i].classList.add('tab');
-  // }
   tab.forEach(element => {
     element.classList.add('tab');
   });
-
-  console.log(topics);
-  console.log(topics.topics);
-  console.log(topics.topics.length);
 
   // Add Attributes value
   for(let i=0; i< topics.topics.length; i++){

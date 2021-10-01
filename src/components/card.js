@@ -1,3 +1,5 @@
+import { articles } from "../mocks/data";
+
 const Card = (article) => {
   // TASK 5
   // ---------------------
@@ -17,7 +19,42 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
+  // Create Element 
+  const card = document.createElement('div');
+  const headline = document.createElement('div');
+  const author = document.createElement('div');
+  const imgContainer = document.createElement('div');
+  const cardImg = document.createElement('img');
+  const authorName = document.createElement('span');
+
+  // Append Element
+  card.appendChild(headline);
+  card.appendChild(author);
+  author.appendChild(imgContainer);
+  imgContainer.append(cardImg);
+  //cardImg.appendChild()
+  author.appendChild(authorName);
+  // imgContainer.appendChild(cardImg);
+
+  // Add Class
+  card.classList.add('card');
+  headline.classList.add('headline');
+  author.classList.add('author');
+  imgContainer.classList.add('img-container');
+  
+  // Add Attributes value
+  headline.textContent = article.headline
+  cardImg.src = article.authorPhoto
+  authorName.textContent = article.authorName
+  console.log(article.headline);
+  console.log(article.authorPhoto);
+  console.log(article.authorName);
+  //console.log(card);
+
+  return card;
 }
+
+
 
 const cardAppender = (selector) => {
   // TASK 6
@@ -28,6 +65,10 @@ const cardAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
+  return articles.articles.javascript.forEach(article => {
+    document.querySelector(selector).appendChild(Card(article));
+  })
+  
 }
 
 export { Card, cardAppender }
