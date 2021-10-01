@@ -11,8 +11,35 @@ const Header = (title, date, temp) => {
   //    <span class="temp">{ temp }</span>
   //  </div>
   //
-}
+  // Create Element
+  const header = document.createElement('div');
+  const headerDate = document.createElement('span');
+  const headerTitle = document.createElement('h1');
+  const headerTemp = document.createElement('span');
 
+  // Append Element
+  header.appendChild(headerDate);
+  header.appendChild(headerTitle);
+  header.appendChild(headerTemp);
+
+   // Add Class
+   header.classList.add('header');
+   headerDate.classList.add('date');
+   headerTemp.classList.add('temp');
+
+   // Add Attributes value
+   headerDate.textContent = date;
+   headerTitle.textContent = title;
+   headerTemp.textContent = temp;
+
+  return header;
+}
+//console.log(Header)
+//console.log(Header('title', '0927', '27'));
+//console.log(Header({title:'title', date:'0927', temp:'27'}));
+
+//document.querySelector('.header-container').appendChild(Header); 
+import axios from "axios";
 const headerAppender = (selector) => {
   // TASK 2
   // ---------------------
@@ -20,6 +47,9 @@ const headerAppender = (selector) => {
   // It should create a header using the Header component above, passing arguments of your choosing.
   // It should append the header to the element in the DOM that matches the given selector.
   //
+  return document.querySelector(selector).appendChild(Header('Lambda Times', 'JANUARY 6,2021', '27°'));
 }
+
+
 
 export { Header, headerAppender }
